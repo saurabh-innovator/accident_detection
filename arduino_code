@@ -1,0 +1,29 @@
+// Arduino code.
+int x=A0;
+int y=A1;
+int z=A2;
+int xdata,ydata,zdata;
+void setup() 
+{
+  Serial.begin(9600);
+   gpsSerial.begin(GPSBaud);
+  pinMode(x,INPUT);
+  pinMode(y,INPUT);
+  pinMode(z,INPUT);
+}
+void loop() 
+{
+  xdata=analogRead(x);
+  ydata=analogRead(y);
+  zdata=analogRead(z);
+  if ((xdata>400) && (ydata <400) && (zdata>400))
+  {
+  Serial.println(1);
+  delay(1000);
+  }
+  else 
+  {
+  Serial.println(0);
+  delay(1000);
+  }
+}
