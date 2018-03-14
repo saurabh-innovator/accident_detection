@@ -1,0 +1,15 @@
+import serial
+import time
+#create account on Twilio for message services.
+from twilio.rest import Client
+account_sid="//your twilio account sid"
+auth_token="//your authentication token"
+client=Client(account_sid, auth_token)
+ser=serial.Serial('/dev/ttyACM0', 9600)
+while True:
+  val=ser.readline()
+  if cval == b'1\r\n':
+    client.api.account.messages.create(to="+91**********", from="//your twilio no.", body="Accident detected")
+    print ("Accident detected")
+  else:
+    print("vehicle safe")
